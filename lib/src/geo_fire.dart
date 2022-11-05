@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geofire/src/collection/with_converter.dart';
+import 'package:geo_fire/src/collection/with_converter.dart';
 
 import 'collection/default.dart';
 import 'models/point.dart';
 
-class Geofire {
-  Geofire();
+class GeoFire {
+  GeoFire();
 
   GeoFireCollectionRef collection({
     required Query<Map<String, dynamic>> collectionRef,

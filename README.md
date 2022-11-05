@@ -1,16 +1,12 @@
-# GeofireFlutter :earth_africa:
+# GeoFire :earth_africa:
 
-[![version][version-badge]][package]
-[![MIT License][license-badge]][license]
-[![PRs Welcome][prs-badge]](https://makeapullrequest.com)
+GeoFire is an open-source library that allows you to store and query a set of keys based on their geographic location. At its heart, GeoFlutterFire simply stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
 
-GeofireFlutter is an open-source library that allows you to store and query a set of keys based on their geographic location. At its heart, GeoFlutterFire simply stores locations with string keys. Its main benefit, however, is the possibility of retrieving only those keys within a given geographic area - all in realtime.
+GeoFire uses the Firebase Firestore Database for data storage, allowing query results to be updated in realtime as they change. GeoFire selectively loads only the data near certain locations, keeping your applications light and responsive, even with extremely large datasets.
 
-GeofireFlutter uses the Firebase Firestore Database for data storage, allowing query results to be updated in realtime as they change. GeofireFlutter selectively loads only the data near certain locations, keeping your applications light and responsive, even with extremely large datasets.
+GeoFire is designed as a lightweight add-on to cloud_firestore plugin. To keep things simple, GeoFire stores data in its own format within your Firestore database. This allows your existing data format and Security Rules to remain unchanged while still providing you with an easy solution for geo queries.
 
-GeofireFlutter is designed as a lightweight add-on to cloud_firestore plugin. To keep things simple, GeofireFlutter stores data in its own format within your Firestore database. This allows your existing data format and Security Rules to remain unchanged while still providing you with an easy solution for geo queries.
-
-Heavily influenced by [GeoFireX](https://github.com/codediodeio/geofirex) :fire::fire: from [Jeff Delaney](https://github.com/codediodeio) :sunglasses:
+Heavily influenced by [GeoFireX](https://github.com/codediodeio/GeoFirex) :fire::fire: from [Jeff Delaney](https://github.com/codediodeio) :sunglasses:
 
 :tv: Checkout this amazing tutorial on [fireship](https://fireship.io/lessons/flutter-realtime-geolocation-firebase/) by Jeff, featuring the plugin!!
 
@@ -32,7 +28,7 @@ Next, add the GeoFirePoint to you document using Firestore's add method
         .add({'name': 'random name', 'position': myLocation.data});
 ```
 
-Calling `geoFirePoint.data` returns an object that contains a [geohash string](https://www.movable-type.co.uk/scripts/geohash.html) and a [Firestore GeoPoint](https://firebase.google.com/docs/reference/android/com/google/firebase/firestore/GeoPoint). It should look like this in your database. You can name the object whatever you want and even save multiple points on a single document.
+Calling `GeoFirePoint.data` returns an object that contains a [geohash string](https://www.movable-type.co.uk/scripts/geohash.html) and a [Firestore GeoPoint](https://firebase.google.com/docs/reference/android/com/google/firebase/firestore/GeoPoint). It should look like this in your database. You can name the object whatever you want and even save multiple points on a single document.
 
 ![](https://firebasestorage.googleapis.com/v0/b/geo-test-c92e4.appspot.com/o/point1.png?alt=media&token=0c833700-3dbd-476a-99a9-41c1143dbe97)
 
@@ -41,7 +37,7 @@ Calling `geoFirePoint.data` returns an object that contains a [geohash string](h
 To query a collection of documents with 50kms from a point
 
 ```dart
-// Create a geoFirePoint
+// Create a GeoFirePoint
 GeoFirePoint center = geo.point(latitude: 12.960632, longitude: 77.641603);
 
 // get the collection reference or query
@@ -62,8 +58,6 @@ stream.listen((List<DocumentSnapshot> documentList) {
       });
 ```
 
-You now have a realtime stream of data to visualize on a map.
-![](https://firebasestorage.googleapis.com/v0/b/geoflutterfire.appspot.com/o/geflutterfire.gif?alt=media&token=8dc3aa9c-ee68-4dfe-9093-c3c1c48979dc)
 
 ## :notebook: API
 
@@ -141,7 +135,7 @@ Example: `var point = geo.point(38, -119)`
 
 ## Using Firestore ```withConverter``` method
 
-If you want to use the collections or queries with this method, you should use ```GeoFlutterFire().collectionWithConverter<T>({ required Query<T> collectionRef })``` instead of ```GeoFlutterFire().collection({ required Query<Map<String, dynamic>> collectionRef })```.
+If you want to use the collections or queries with this method, you should use ```GeoFire().collectionWithConverter<T>({ required Query<T> collectionRef })``` instead of ```GeoFire().collection({ required Query<Map<String, dynamic>> collectionRef })```.
 
 Despite the different initializers, the only difference is in the ```within``` method, where in the former initialization you have a extra param that needs to return the ```GeoPoint``` from the data type in the query.
 
@@ -191,13 +185,3 @@ radius.add(25);
 - range queries on multiple fields is not supported by cloud_firestore at the moment, since this library already uses range query on `geohash` field, you cannot perform range queries with `GeoFireCollectionRef`.
 - `limit()` and `orderBy()` are not supported at the moment. `limit()` could be used to limit docs inside each hash individually which would result in running limit on all 9 hashes inside the specified radius. `orderBy()` is first run on `geohashes` in the library, hence appending `orderBy()` with another feild wouldn't produce expected results. Alternatively documents can be sorted on client side.
 
-[version-badge]: https://img.shields.io/pub/vpre/geoflutterfire.svg
-[package]: https://pub.dartlang.org/packages/geoflutterfire
-[license-badge]: https://img.shields.io/github/license/DarshanGowda0/GeoFlutterFire.svg
-[license]: https://github.com/DarshanGowda0/GeoFlutterFire/blob/master/LICENSE
-[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
-[prs]: http://makeapullrequest.com
-[github-watch-badge]: https://img.shields.io/github/watchers/DarshanGowda0/GeoFlutterFire.svg?style=social
-[github-watch]: https://github.com/DarshanGowda0/GeoFlutterFire/watchers
-[github-star-badge]: https://img.shields.io/github/stars/DarshanGowda0/GeoFlutterFire.svg?style=social
-[github-star]: https://github.com/DarshanGowda0/GeoFlutterFire/stargazers

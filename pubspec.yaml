@@ -1,5 +1,5 @@
-name: geofire
-description: Geofire is an open-source library that allows you to store and query firestore documents based on their geographic location.
+name: geo_fire
+description: GeoFire is an open-source library that allows you to store and query firestore documents based on their geographic location.
 version: 0.0.1
 homepage: https://github.com/cedvdb/geofire_flutter
 
