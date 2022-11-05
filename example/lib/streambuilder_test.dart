@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
+import 'package:geofire/geofire.dart';
 import 'package:rxdart/rxdart.dart';
 
 class StreamTestWidget extends StatefulWidget {
@@ -10,7 +10,7 @@ class StreamTestWidget extends StatefulWidget {
 
 class _StreamTestWidgetState extends State<StreamTestWidget> {
   final _firestore = FirebaseFirestore.instance;
-  final geo = Geoflutterfire();
+  final geo = Geofire();
 
   late Stream<List<DocumentSnapshot>> stream;
 

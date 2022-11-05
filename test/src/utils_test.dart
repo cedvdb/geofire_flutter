@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
-import 'package:geoflutterfire/src/utils/arrays.dart';
-import 'package:geoflutterfire/src/utils/math.dart';
+import 'package:geofire/geofire.dart';
+import 'package:geofire/src/utils/arrays.dart';
+import 'package:geofire/src/utils/math.dart';
 
 void main() {
   test('whereNotNull should remove correct elements', () {

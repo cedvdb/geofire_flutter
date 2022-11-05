@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
+import 'package:geofire/geofire.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -34,7 +34,7 @@ class MyAppState extends State<MyApp> {
   final markers = <MarkerId, Marker>{};
 
   late Stream<List<DocumentSnapshot>> stream;
-  late Geoflutterfire geo;
+  late Geofire geo;
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class MyAppState extends State<MyApp> {
     _latitudeController = TextEditingController();
     _longitudeController = TextEditingController();
 
-    geo = Geoflutterfire();
+    geo = Geofire();
     GeoFirePoint center = geo.point(latitude: 12.960632, longitude: 77.641603);
     stream = radius.switchMap((rad) {
       final collectionReference = _firestore.collection('locations');
